@@ -1,12 +1,19 @@
-function getComputerChoice() 
-{
-   return Math.floor((Math.random() * 3)) + 1;
+function getComputerChoice() {
+    return Math.floor((Math.random() * 3)) + 1;
 }
 
-function getRoundResult(playerSelection, computerSelection) 
-{
+function playRound(playerSelection, computerSelection) {
+
+    switch (computerSelection) {
+        case 1: computerSelection = "rock";
+            break;
+        case 2: computerSelection = "paper";
+            break;
+        case 3: computerSelection = "scissors";
+            break;
+    }
+    console.log(computerSelection);
     playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
 
     if (playerSelection == "rock") {
         if (computerSelection == "paper") {
@@ -32,6 +39,30 @@ function getRoundResult(playerSelection, computerSelection)
             return "You Lose! Rock beats Scissors.";
         }
     }
+    return "You Tied with the computer!";
 }
 
-console.log(getRoundResult("rock","rock"));
+function calculateResult(letter) {
+    switch(letter) {
+        case 'W': return 1;
+        case 'L':
+        case 'T': return 0;
+    }
+}
+
+function game() {
+    let result;
+    let score = 0;
+    for (let i = 0; i < 5; ++i) {
+
+        result = playRound(prompt("Enter your choice"), getComputerChoice());  
+        console.log(result);
+
+        let letter = result.substring(4,5);
+        score += calculateResult(letter);
+        console.log("Your score is: " + score);
+    }   
+}
+
+game();
+
