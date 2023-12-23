@@ -43,26 +43,54 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function calculateResult(letter) {
-    switch(letter) {
+    switch (letter) {
         case 'W': return 1;
         case 'L':
         case 'T': return 0;
     }
 }
 
+
+
+const b1 = document.querySelector('#btn1');
+const b2 = document.querySelector('#btn2');
+const b3 = document.querySelector('#btn3');
+
+
+let choice;
+let score = 0;
+
 function game() {
     let result;
-    let score = 0;
-    for (let i = 0; i < 5; ++i) {
+    
+    
 
-        result = playRound(prompt("Enter your choice"), getComputerChoice());  
-        console.log(result);
+    result = playRound(choice, getComputerChoice());
+    console.log(result);
 
-        let letter = result.substring(4,5);
-        score += calculateResult(letter);
-        console.log("Your score is: " + score);
-    }   
+    let letter = result.substring(4, 5);
+    score += calculateResult(letter);
+    console.log("Your score is: " + score);
+
 }
 
-game();
+
+b1.addEventListener('click', () => {
+    choice = "rock";
+    game();
+})
+
+b2.addEventListener('click', () => {
+    choice = "paper";
+    game();
+})
+
+b3.addEventListener('click', () => {
+    choice = "scissors";
+    game();
+})
+
+
+
+
 
