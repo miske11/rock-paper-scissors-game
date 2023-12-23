@@ -51,6 +51,12 @@ const resultDisplay = document.createElement('div');
 body.appendChild(resultDisplay);
 
 
+function disableButtons() {
+    b1.disabled = true;
+    b2.disabled = true;
+    b3.disabled = true;
+}
+
 function game() {
 
 
@@ -59,10 +65,12 @@ function game() {
 
     if (playerScore == 5) {
         resultDisplay.textContent = "Player wins!";
+        disableButtons();
         return;
     }
     if (computerScore == 5) {
         resultDisplay.textContent = "Computer wins!";
+        disableButtons();
         return;
     }
 
