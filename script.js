@@ -46,9 +46,21 @@ const b1 = document.querySelector('#btn1');
 const b2 = document.querySelector('#btn2');
 const b3 = document.querySelector('#btn3');
 
+const main = document.createElement('div');
+const buttons = document.querySelector('.buttons');
 const body = document.querySelector('body');
 const resultDisplay = document.createElement('div');
-body.appendChild(resultDisplay);
+
+
+
+body.appendChild(main);
+main.appendChild(buttons);
+main.appendChild(resultDisplay);
+
+
+main.setAttribute('style', 'display: flex; justify-content: center; align-items: center; flex-direction: column;');
+body.setAttribute('style', 'display: flex; justify-content: center; align-items: center; height: 600px;');
+
 
 
 function disableButtons() {
@@ -60,7 +72,7 @@ function disableButtons() {
 function game() {
 
 
-    resultDisplay.textContent = `Player: ${playerScore} \n Computer: ${computerScore}`;
+    resultDisplay.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
 
 
     if (playerScore == 5) {
